@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тест: мои радикалы характера</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F6F2EA; --paper2:#ECE5D8; --ink:#1E2235; --text:#3A3F52; --muted:#5E6274;
+    --accent:#A4471F; --accent2:#C98A63; --accent3:#D9B79D; --green:#2F6B4F;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--text);font-family:Inter,Arial,sans-serif;font-size:17px;line-height:1.5}
+  .wrap{max-width:720px;margin:0 auto;padding:28px 20px 60px}
+  h1,h2,h3{font-family:"EB Garamond",Georgia,serif;color:var(--ink);font-weight:600;margin:0}
+  h1{font-size:40px;line-height:1.05}
+  h2{font-size:30px;line-height:1.15}
+  h3{font-size:23px;line-height:1.2}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  p{margin:0 0 12px}
+  .muted{color:var(--muted);font-size:15px}
+  .card{background:var(--paper2);border-radius:14px;padding:18px 20px;margin:16px 0}
+  .note{border-left:4px solid var(--accent);padding:4px 0 4px 14px;margin:18px 0;font-size:15px}
+  button{font:inherit;cursor:pointer;border:none}
+  .btn{background:var(--ink);color:var(--paper);border-radius:12px;padding:14px 22px;font-weight:600;font-size:16px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #c9bfae}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  /* quiz */
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:14px;color:var(--muted)}
+  .bar{height:6px;background:var(--paper2);border-radius:3px;overflow:hidden;margin-bottom:28px}
+  .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+  .q{font-family:"EB Garamond",Georgia,serif;font-size:28px;line-height:1.2;color:var(--ink);min-height:3.6em;margin-bottom:22px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{background:#fff8;border:1.5px solid #d8cfbf;border-radius:12px;padding:14px 16px;text-align:left;color:var(--ink);font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .opt:hover{border-color:var(--accent2)}
+  .opt.sel{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .opt .dot{width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;flex:none;margin-left:12px}
+  .opt.sel .dot{background:var(--paper)}
+  .linkbtn{background:none;color:var(--muted);text-decoration:underline;padding:6px 0;font-size:15px}
+  /* result */
+  .bars{margin:18px 0 6px}
+  .brow{display:grid;grid-template-columns:150px 1fr 44px;gap:10px;align-items:center;margin:9px 0;font-size:15px}
+  .brow .nm{color:var(--ink);font-weight:500}
+  .brow .tr{background:var(--paper2);height:16px;border-radius:8px;overflow:hidden}
+  .brow .fl{height:100%;border-radius:8px}
+  .brow .pc{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+  .code{font-family:"EB Garamond",Georgia,serif;font-size:34px;color:var(--ink);letter-spacing:.04em}
+  .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);background:var(--accent);border-radius:6px;padding:3px 8px;margin-bottom:8px}
+  .tag.t2{background:#7a5a45}.tag.t3{background:#6a6e80}
+  .rad h3{margin-bottom:6px}
+  .rad ul{margin:6px 0 12px;padding-left:20px}
+  .rad li{margin:3px 0}
+  .lbl{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin:12px 0 2px}
+  .lbl.r{color:var(--accent)}
+  .hidden{display:none}
+  @media (max-width:480px){ h1{font-size:34px} .q{font-size:24px} .brow{grid-template-columns:124px 1fr 40px;font-size:14px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="start">
+  <p class="eyebrow">По методике «7 радикалов» В. Пономаренко</p>
+  <h1>Какие радикалы ведут ваш характер?</h1>
+  <p style="margin-top:16px">42 утверждения, около 7 минут. Отвечайте, как вы ведёте себя обычно, а не как хотелось бы. Первое впечатление — самое точное.</p>
+  <div class="card">
+    <p style="margin:0">На выходе — ваш психологический профиль: все семь радикалов по силе, цифровой код и разбор трёх ведущих — в чём вы сильны, какие задачи вам легко даются и как с вами лучше общаться.</p>
+  </div>
+  <p class="note">Честно о точности: сам автор подчёркивает, что его методика — «нетестовая» и строится на наблюдении за поведением. Этот опросник — самопроверка по признакам из книги. Он даёт гипотезу, которую стоит сверить с реальными поступками и взглядом со стороны.</p>
+  <div class="row" style="margin-top:22px">
+    <button class="btn" id="go">Начать тест</button>
+    <button class="btn ghost hidden" id="resume">Продолжить с места остановки</button>
+  </div>
+  <p class="muted" style="margin-top:16px">Можно пройти и за другого человека: отвечайте, представляя его поведение.</p>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top"><span id="cnt">1 из 42</span><button class="linkbtn" id="back">← Назад</button></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="q" id="qtext"></div>
+  <div class="opts" id="opts"></div>
+</section>
+
+<section id="result" class="hidden">
+  <p class="eyebrow">Ваш профиль</p>
+  <h2>Радикалы по силе выраженности</h2>
+  <div class="bars" id="bars"></div>
+  <p class="muted">Код профиля (порядок от сильного к слабому):</p>
+  <p class="code" id="code"></p>
+  <p class="muted" id="codeexp"></p>
+  <div id="rads"></div>
+  <div class="card">
+    <h3>Как проверить результат</h3>
+    <p style="margin-top:8px">Автор советует строить собственный профиль по реальным значимым поступкам. Вспомните 2–3 решения, которые повлияли на вашу жизнь: что вы выбрали, между чем и чем, что оказалось важнее всего? Сверьте это с описаниями выше.</p>
+    <p style="margin:0">Помните: в реальном характере обычно несколько радикалов. Первый в профиле задаёт цель поведения, второй — способ её достигать. И все радикалы — благо: «плохих» качеств нет, есть неподходящая для них среда.</p>
+  </div>
+  <div class="row" style="margin-top:20px">
+    <button class="btn" id="copy">Скопировать результат</button>
+    <button class="btn ghost" id="again">Пройти заново</button>
+  </div>
+  <p class="muted" id="copied" style="margin-top:10px"></p>
+</section>
+
+</div>
+<script>
+const R = [
+ {id:1, name:"Истероидный", short:"Ист.", essence:"Яркость, артистизм и умение произвести впечатление. Вам важно быть замеченным и признанным.",
+  plus:["Производите сильное первое впечатление","Легко вписываетесь в любую среду и роль","Мастер экспромта и публичности"],
+  easy:"Презентации, выступления, переговоры «на сцене», PR, представительство — всё, где есть публика и признание.",
+  risk:"Рутина без зрителей быстро гасит интерес; есть соблазн обещать больше, чем сделаете, и бросать дело на первых трудностях.",
+  talk:"Отмечайте ваши заслуги публично, не соревнуйтесь с вами за внимание, поздравляйте и благодарите — это лучшая мотивация."},
+ {id:2, name:"Эпилептоидный", short:"Эпи.", essence:"Порядок, контроль и точность. Вам спокойнее, когда всё на своих местах и подчиняется правилам.",
+  plus:["Аккуратность, организованность, внимание к деталям","Мастерство в точной, технологичной работе","Решительность и защита «своих»"],
+  easy:"Контроль, проверка, аудит, точное ремесло, распределение обязанностей и контроль результатов, неспешная аккуратная работа.",
+  risk:"Раздражение копится и может прорваться; склонность давить и контролировать других, застревать на мелочах.",
+  talk:"Уважать вашу территорию и вещи, не вторгаться без спроса, говорить чётко и по делу, держать свои границы — тогда отношения ровные."},
+ {id:3, name:"Паранойяльный", short:"Пар.", essence:"Цель, энергия и лидерство. Вы идёте к большому результату и увлекаете за собой других.",
+  plus:["Целеустремлённость и высокая работоспособность","Упорство в преодолении препятствий","Масштаб замысла, умение вести команду"],
+  easy:"Любые задачи с конкретным результатом: проекты, запуск нового, масштабирование, мобилизация людей вокруг идеи.",
+  risk:"Упрямство и глухота к чужим идеям, упрощение сложного до лозунга, готовность жертвовать отдыхом — своим и чужим.",
+  talk:"Не переубеждать в лоб, а искать общую цель; уважать ваш замысел и предлагать вклад в него, а не спор ради спора."},
+ {id:4, name:"Эмотивный", short:"Эмо.", essence:"Чуткость, сопереживание и чувство гармонии. Вы тонко ощущаете людей и красоту.",
+  plus:["Эмпатия и такт, чувствуете настроение других","Добросовестность и чувство долга перед людьми","Вкус и чувство гармонии"],
+  easy:"Работа с людьми и заботой о них, сервис, наставничество, редактура, оформление, дизайн, искусство.",
+  risk:"Трудно отказать, наказать, жёстко поставить границу; доброта может переходить в попустительство.",
+  talk:"Искренность прежде всего: лучше честная претензия, чем наигранное дружелюбие — фальшь вы чувствуете сразу."},
+ {id:5, name:"Шизоидный", short:"Шиз.", essence:"Нестандартное мышление и творчество. Вы видите в привычном то, чего не замечают другие.",
+  plus:["Оригинальные идеи и свежий взгляд","Лёгкость в сложных теориях и абстракциях","Независимость от шаблонов"],
+  easy:"Поиск идей, исследования, изобретательство, программирование, конструирование, философия, искусство.",
+  risk:"Уход в сторону от цели, сложности с бытом и рутиной, невольная бестактность, трудность объяснить свою мысль другим.",
+  talk:"Дать вам пространство и дистанцию, не требовать «как все», а важные советы иногда лучше услышать от нейтрального человека."},
+ {id:6, name:"Гипертимный", short:"Гип.", essence:"Энергия, оптимизм и общительность. Вы заряжаете людей и не боитесь жить.",
+  plus:["Неиссякаемая энергия и хорошее настроение","Лёгкость знакомств и широкие связи","Стрессоустойчивость и находчивость"],
+  easy:"Собрать людей, организовать событие, нетворкинг, роль связующего звена в команде, быстрые живые задачи.",
+  risk:"Многое начато и не закончено, обещания забываются, недооценка рисков и последствий.",
+  talk:"Не удерживать и не загонять в рамки, но договорённости закреплять напоминаниями; ценить вашу лёгкость."},
+ {id:7, name:"Тревожный", short:"Трев.", essence:"Осторожность, надёжность и верность привычному. Вы взвешиваете, прежде чем шагнуть.",
+  plus:["Осторожность: замечаете риски раньше других","Исполнительность и пунктуальность","Верность делу и людям на годы"],
+  easy:"Регламентированная работа с чёткими инструкциями, долгосрочные роли, где важны надёжность и проверенность.",
+  risk:"Сомнения и затянутые решения, страх перемен и ответственности, оцепенение под давлением.",
+  talk:"Предсказуемость: давать время на решение, поддерживать, не менять договорённости резко и не торопить."}
+];
+const Q = [
+ [1,"Мне важно, чтобы меня замечали и выделяли среди других."],
+ [1,"Я трачу заметное время и деньги на внешний вид, чтобы производить впечатление."],
+ [1,"Мне легко очаровать людей при первом знакомстве."],
+ [1,"Я легко вживаюсь в разные роли и подстраиваюсь под любую компанию."],
+ [1,"Публичная похвала мотивирует меня сильнее, чем деньги."],
+ [1,"Рутинная работа без зрителей быстро мне надоедает, и я её бросаю."],
+ [2,"У каждой моей вещи есть своё место, и меня злит, когда порядок нарушают."],
+ [2,"Меня раздражает, когда кто-то берёт мои вещи или вторгается в мои дела без спроса."],
+ [2,"Неаккуратность и небрежность других людей выводят меня из себя."],
+ [2,"Мне нравится точная работа руками, где важна каждая деталь."],
+ [2,"Раздражение во мне копится, а потом может резко прорваться."],
+ [2,"Я замечаю нарушения правил и не готов закрывать на них глаза."],
+ [3,"У меня есть большая цель, к которой я иду годами."],
+ [3,"Я думаю о работе везде: дома, в дороге, даже перед сном."],
+ [3,"Если я уверен в своей правоте, переубедить меня почти невозможно."],
+ [3,"Мне нравится увлекать людей своей идеей и вести их за собой."],
+ [3,"Ради важного результата я готов надолго отказаться от отдыха."],
+ [3,"Любую задачу мне хочется сделать масштабнее, чем её поставили."],
+ [4,"Я замечаю малейшие изменения в настроении людей вокруг."],
+ [4,"Чужая боль порой задевает меня сильнее собственной."],
+ [4,"Фальшь в общении я чувствую сразу, и мне от неё не по себе."],
+ [4,"Безвкусица и грубость вызывают у меня почти физический дискомфорт."],
+ [4,"Мне трудно наказать, отказать или жёстко поставить человека на место."],
+ [4,"Музыка, живопись или стихи занимают важное место в моей жизни."],
+ [5,"Мне часто говорят, что я смотрю на вещи необычно."],
+ [5,"В привычных вещах я легко вижу неожиданные применения и варианты."],
+ [5,"Простые бытовые дела иногда даются мне труднее, чем сложные теории."],
+ [5,"Я могу одеться в несочетаемые вещи, и меня это мало волнует."],
+ [5,"Начав одно дело, я часто увлекаюсь побочной идеей и ухожу в сторону."],
+ [5,"Люди иногда считают меня бестактным, хотя я этого не хотел."],
+ [6,"Я почти всегда в хорошем настроении и полон энергии."],
+ [6,"Я легко знакомлюсь с кем угодно и быстро перехожу на «ты»."],
+ [6,"Я берусь за много дел сразу, но не все довожу до конца."],
+ [6,"Я редко тревожусь о последствиях — лучше действовать."],
+ [6,"Мне легко собрать людей на встречу, праздник или поездку."],
+ [6,"Сидеть на месте за кропотливой работой для меня мучение."],
+ [7,"Перед важным решением я долго сомневаюсь и взвешиваю."],
+ [7,"В незнакомой компании я стараюсь быть незаметным."],
+ [7,"Перемены, даже к лучшему, вызывают у меня напряжение."],
+ [7,"Я предпочитаю неброскую одежду и годами ношу проверенные вещи."],
+ [7,"Когда меня торопят с решением, я теряюсь."],
+ [7,"Руководить людьми мне не хочется, даже если предложат."]
+];
+const OPTS = ["Совсем не про меня","Скорее нет","Отчасти","Скорее да","Точно про меня"];
+const KEY = "radicals-test-v1";
+
+// fixed shuffled order (interleaves radicals)
+function seeded(n){let s=7;const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const ORDER = seeded(Q.length);
+
+let answers = new Array(Q.length).fill(null), pos = 0;
+const $ = id => document.getElementById(id);
+function save(){try{localStorage.setItem(KEY,JSON.stringify({answers,pos}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d&&Array.isArray(d.answers)&&d.answers.length===Q.length)return d}catch(e){}return null}
+function show(id){["start","quiz","result"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo(0,0)}
+
+function renderQ(){
+  const qi = ORDER[pos];
+  $("cnt").textContent = (pos+1)+" из "+Q.length;
+  $("prog").style.width = (pos/Q.length*100)+"%";
+  $("back").style.visibility = pos>0?"visible":"hidden";
+  $("qtext").textContent = Q[qi][1];
+  const box = $("opts"); box.innerHTML = "";
+  OPTS.forEach((t,v)=>{
+    const b=document.createElement("button");
+    b.className="opt"+(answers[qi]===v?" sel":"");
+    b.innerHTML="<span></span><span class='dot'></span>"; b.firstChild.textContent=t;
+    b.onclick=()=>{answers[qi]=v;b.classList.add("sel");save();
+      setTimeout(()=>{ if(pos<Q.length-1){pos++;save();renderQ()} else {finish()} },180)};
+    box.appendChild(b);
+  });
+}
+
+function scores(){
+  return R.map(r=>{
+    const its=Q.map((q,i)=>[q,i]).filter(([q])=>q[0]===r.id);
+    const sum=its.reduce((s,[,i])=>s+(answers[i]||0),0);
+    return {...r, pct:Math.round(sum/(its.length*4)*100)};
+  }).sort((a,b)=>b.pct-a.pct);
+}
+
+function finish(){
+  $("prog").style.width="100%";
+  const S=scores();
+  const bars=$("bars"); bars.innerHTML="";
+  S.forEach((s,i)=>{
+    const col = i===0?"var(--accent)":i<3?"var(--accent2)":"var(--accent3)";
+    const row=document.createElement("div"); row.className="brow";
+    row.innerHTML=`<span class="nm">${s.name}</span><span class="tr"><span class="fl" style="display:block;width:${Math.max(s.pct,2)}%;background:${col}"></span></span><span class="pc">${s.pct}%</span>`;
+    bars.appendChild(row);
+  });
+  const strong=S.filter(s=>s.pct>=40);
+  const codeList=(strong.length>=3?strong:S.slice(0,3));
+  $("code").textContent=codeList.map(s=>s.id).join(", ");
+  $("codeexp").textContent = "В код вошли радикалы от 40% и выше (минимум три ведущих). 1 — истероидный, 2 — эпилептоидный, 3 — паранойяльный, 4 — эмотивный, 5 — шизоидный, 6 — гипертимный, 7 — тревожный."
+    + (S[0].pct-S[1].pct<=5 ? " Первые два радикала почти равны: в разных ситуациях ведущим может становиться то один, то другой." : "");
+  const rads=$("rads"); rads.innerHTML="";
+  const tags=["Ведущий радикал","Второй по силе","Третий по силе"];
+  S.slice(0,3).forEach((s,i)=>{
+    const d=document.createElement("div"); d.className="card rad";
+    d.innerHTML=`<span class="tag ${i?'t'+(i+1):''}">${tags[i]} · ${s.pct}%</span><h3>${s.name}</h3><p>${s.essence}</p>
+    <p class="lbl">Сильные стороны</p><ul>${s.plus.map(x=>"<li>"+x+"</li>").join("")}</ul>
+    <p class="lbl">Где вам легко</p><p>${s.easy}</p>
+    <p class="lbl r">Зона внимания</p><p>${s.risk}</p>
+    <p class="lbl">Как с вами лучше общаться</p><p style="margin:0">${s.talk}</p>`;
+    rads.appendChild(d);
+  });
+  if(S[0].pct>0 && S[1]){
+    const p=document.createElement("p"); p.className="note";
+    p.textContent=`Связка «${S[0].name.toLowerCase()} → ${S[1].name.toLowerCase()}»: цель вашего поведения задаёт ${S[0].name.toLowerCase()} радикал, а способ её достижения подсказывает ${S[1].name.toLowerCase()}.`;
+    rads.prepend(p);
+  }
+  try{localStorage.setItem(KEY+"-done",JSON.stringify(answers));localStorage.removeItem(KEY)}catch(e){}
+  show("result");
+}
+
+$("go").onclick=()=>{answers=new Array(Q.length).fill(null);pos=0;save();show("quiz");renderQ()};
+$("resume").onclick=()=>{const d=load();if(d){answers=d.answers;pos=Math.min(d.pos,Q.length-1)}show("quiz");renderQ()};
+$("back").onclick=()=>{if(pos>0){pos--;save();renderQ()}};
+$("again").onclick=()=>{answers=new Array(Q.length).fill(null);pos=0;save();show("quiz");renderQ()};
+$("copy").onclick=async()=>{
+  const S=scores();
+  const txt="Мой профиль по методике «7 радикалов»:\n"+S.map(s=>`${s.name}: ${s.pct}%`).join("\n")+"\nКод: "+$("code").textContent;
+  try{await navigator.clipboard.writeText(txt);$("copied").textContent="Скопировано."}catch(e){$("copied").textContent="Не получилось скопировать — выделите результат вручную."}
+};
+(function init(){
+  const d=load();
+  if(d && d.answers.some(a=>a!==null)) $("resume").classList.remove("hidden");
+})();
+</script>
+</body>
+</html>
